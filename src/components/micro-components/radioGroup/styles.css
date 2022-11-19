@@ -1,10 +1,7 @@
 @import '@radix-ui/colors/blackA.css';
 @import '@radix-ui/colors/violet.css';
 
-/* reset */
-button {
-  all: unset;
-}
+
 
 .RadioGroupIndicator {
   display: flex;
@@ -22,12 +19,4 @@ button {
   height: 11px;
   border-radius: 50%;
   background-color: var(--violet11);
-}
-
-.Label {
-  color: white;
-  font-size: 15px;
-  line-height: 1;
-  user-select: none;
-  padding-left: 15px;
 }

@@ -1,10 +1,11 @@
 import { useState, FormEvent } from 'react';
 
-import { InputText } from '../components/InputText';
-import { Button } from '../components/Button';
+import { InputText } from '../components/micro-components/InputText';
+import { Button } from '../components/micro-components/Button';
 
 import axios from 'axios';
 import '../styles/main.css';
+import { Footer } from '../components/Footer';
 
 export function DownloadExcel() {
 
@@ -45,10 +46,10 @@ export function DownloadExcel() {
   }
 
   return (
-    <div className='bg-slate-50 min-h-screen mx-auto flex flex-col justify-center items-center'>
+    <div className='bg-slate-50 mt-24 mx-auto flex flex-col justify-center items-center'>
 
-      <h1 className='text-bluePurple-500 text-4xl font-bold'>ENTREVISTA CLÍNICA</h1>
-      <h1 className='text-bluePurple-500 text-4xl font-bold'>ESTRUTURADA</h1>
+      <h1 className='text-bluePurple-500 text-4xl font-bold'>RESPOSTAS DA ENTREVISTA </h1>
+      <h1 className='text-bluePurple-500 text-4xl font-bold'>CLÍNICA ESTRUTURADA</h1>
 
       <form onSubmit={handleForm} className='flex flex-col'>
         <InputText
@@ -68,6 +69,7 @@ export function DownloadExcel() {
         <Button value='Baixar Excel' />
       </form>
 
+      <Footer />
     </div>
   )
 };
