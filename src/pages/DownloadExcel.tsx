@@ -46,7 +46,7 @@ export function DownloadExcel() {
   }
 
   return (
-    <div className='bg-slate-50 mt-24 mx-auto flex flex-col justify-center items-center'>
+    <div className='bg-slate-50 h-[75vh] mx-auto flex flex-col justify-center items-center'>
 
       <h1 className='text-bluePurple-500 text-4xl font-bold'>RESPOSTAS DA ENTREVISTA </h1>
       <h1 className='text-bluePurple-500 text-4xl font-bold'>CLÍNICA ESTRUTURADA</h1>
