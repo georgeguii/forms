@@ -1,6 +1,13 @@
 
+import { useState } from "react";
 import { Button } from "./micro-components/Button";
 import { RadioGroupDemo } from "./micro-components/radioGroup/RadioGroup";
+
+// interface CheckAgeProps {
+//   legalAge: boolean;
+// }
+
+// const [legalAge, setlegalAge] = useState<boolean>(false);
 
 export function CheckAge() {
   return (
@@ -12,7 +19,9 @@ export function CheckAge() {
           onAnswer={() => console.log("teste")}
           questionId="1"
         />
-        <Button value="Próxima" />
+        <div className="flex flex-col items-end">
+          <Button value="Próxima" />
+        </div>
       </div>
 
     </div>

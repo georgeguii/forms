@@ -1,4 +1,5 @@
 import { CheckAge } from '../components/CheckAge';
+import { Sociodemographic } from '../components/Sociodemographic';
 
 interface Answer {
   questionId: string;
@@ -19,9 +20,9 @@ export function Home() {
 
   return (
 
-    <div className='bg-slate-100 h-[81vh]'>
+    <div className='bg-slate-100 min-h-[81vh]'>
       <h2 className="flex justify-center items-center py-10 text-2xl font-bold">Estudo Piloto - Saúde Mental UNEB: CIS-R + PHQ9 + GHQ12</h2>
-      <CheckAge />
+      <Sociodemographic />
 
     </div>
   )

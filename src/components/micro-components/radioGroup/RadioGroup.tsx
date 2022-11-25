@@ -47,7 +47,7 @@ export function RadioGroupDemo(props: RadioProps) {
     })
 
     return (
-        <div className='bg-white rounded-md border-2 pl-8 pr-80 py-8'>
+        <div className='mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2 '>
             <LabelForm label={props.label} />
             <RadioGroup.Root className="flex flex-col gap gap-2.5 mt-3" defaultValue="default" aria-label="View density">
                 <div className='flex flex-col gap gap-2 '>
