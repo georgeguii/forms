@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from "react";
-import { LabelForm } from './Label';
 
+import { LabelForm } from './Label';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string

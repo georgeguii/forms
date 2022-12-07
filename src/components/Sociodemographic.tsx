@@ -1,14 +1,26 @@
+import { useContext } from 'react';
+import { AnswerContext } from '../contexts/answer';
+
+import { Button } from "./micro-components/Button";
 import { InputText } from "./micro-components/InputText";
 import { RadioGroupDemo } from "./micro-components/radioGroup/RadioGroup";
 
 export function Sociodemographic() {
+
+  const { submitAnswers } = useContext(AnswerContext);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    submitAnswers()
+  }
+
   return (
     <div className="flex justify-center items-center ">
       <div className=" flex flex-col justify-center items-center ">
         {/* bg-white rounded-md border-2 */}
 
         <h2 className="border-b-2 pb-2 text-2xl">Variáveis Sociodemográficas</h2>
-        <form action="">
+        <form onSubmit={handleSubmit}>
 
           <div className="flex flex-col items-start">
 
@@ -171,6 +183,11 @@ export function Sociodemographic() {
             />
 
           </div>
+
+          <div className="flex justify-end">
+            <Button value="Continuar" />
+          </div>
+
         </form>
 
       </div>

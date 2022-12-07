@@ -7,16 +7,15 @@ import { DownloadExcel } from './pages/DownloadExcel';
 
 
 function App() {
-
   return (
     <div>
       <Header />
-      <Router>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/baixar-excel' element={<DownloadExcel />} />
-        </Routes>
-      </Router>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/baixar-excel' element={<DownloadExcel />} />
+          </Routes>
+        </Router>
       <Footer />
     </div >
   )
