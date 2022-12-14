@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import { LabelForm } from "../components/Label";
 
+
 export function Sociodemographic() {
 
     const navigate = useNavigate();
@@ -51,27 +52,27 @@ export function Sociodemographic() {
 
                             <div className="flex flex-col items-start">
 
-                                <TextField questionId="5051" label="Número de matrícula UNEB" placeholder="Seu número de matricula, utilizando apenas números" onAnswer={(ans: any) => answer["matricula"] = ans.primaryValue} type="number" />
+                                <TextField questionId="5051" label="Número de matrícula UNEB" placeholder="Seu número de matricula, utilizando apenas números" onAnswer={(ans: any) => answer["enrollment"] = ans.primaryValue} type="number" />
 
                                 <TextField questionId="5052" label="Email" placeholder="Preencha com seu e-mail principal" onAnswer={(ans: any) => answer["email"] = ans.primaryValue} type="email" />
 
-                                <TextField questionId="5053" label="Idade" placeholder="Sua idade" onAnswer={(ans: any) => answer["idade"] = ans.primaryValue} type="number" min={18} max={110} />
+                                <TextField questionId="5053" label="Idade" placeholder="Sua idade" onAnswer={(ans: any) => answer["age"] = ans.primaryValue} type="number" min={18} max={110} />
 
                                 <RadioGroupDemo2 label="Sexo:"
                                     values={["Masculino", "Feminino"]}
-                                    onAnswer={(ans: any) => answer["sexo"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["gender"] = ans.primaryValue}
                                     questionId="5001"
                                 />
 
                                 <RadioGroupDemo2 label="Graduação que está cursando atualmente na UNEB"
                                     values={["Enfermagem", "Medicina"]}
-                                    onAnswer={(ans: any) => answer["curso"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["course"] = ans.primaryValue}
                                     questionId="5002"
                                 />
 
                                 <div className="mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2 ">
                                     <LabelForm label="Ano do curso de graduação" />
-                                    <RadioGroup.Root onChange={(radio: any) => answer["anoCurso"] = (radio.target.value)} className="flex flex-col gap gap-2.5 " defaultValue="default" aria-label="View density">
+                                    <RadioGroup.Root onChange={(radio: any) => answer["courseYear"] = (radio.target.value)} className="flex flex-col gap gap-2.5 " defaultValue="default" aria-label="View density">
                                         <div className='flex max-[540px]:flex-col min-[541px]:gap-20 my-4'>
                                             <div>
                                                 <div className='flex items-center gap-4 mt-2'>
@@ -138,7 +139,7 @@ export function Sociodemographic() {
 
                                 <div className="mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2 ">
                                     <LabelForm label="Semestre atual da graduação" />
-                                    <RadioGroup.Root onChange={(radio: any) => answer["semestre"] = (radio.target.value)} className="flex flex-col gap gap-2.5 " defaultValue="default" aria-label="View density">
+                                    <RadioGroup.Root onChange={(radio: any) => answer["semester"] = (radio.target.value)} className="flex flex-col gap gap-2.5 " defaultValue="default" aria-label="View density">
                                         <div className='flex max-[540px]:flex-col min-[541px]:gap-20 my-4'>
                                             <div>
                                                 <div className='flex items-center gap-4 mt-2'>
@@ -271,44 +272,44 @@ export function Sociodemographic() {
 
                                 <RadioGroupDemo2 label="Renda familiar mensal média"
                                     values={["Até 2 salários mínimos", "Entre 2 e 4 salários mínimos", "Entre 4 e 10 salários mínimos", "Entre 10 e 20 salários mínimos", "Acima de 20 salários mínimos"]}
-                                    onAnswer={(ans: any) => answer["renda"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["income"] = ans.primaryValue}
                                     questionId="5003"
                                 />
 
 
                                 <RadioGroupDemo2 label="Eu considero ter uma rede de apoio familiar sólida"
                                     values={["Concordo fortemente", "Concordo", "Discordo", "Discordo fortemente"]}
-                                    onAnswer={(ans: any) => answer["apoioFamiliar"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["familySupport"] = ans.primaryValue}
                                     questionId="5004"
                                 />
 
                                 <RadioGroupDemo2 label="Status de relacionamento"
                                     values={["Solteiro", "Namorando", "Casado", "Viúvo"]}
-                                    onAnswer={(ans: any) => answer["relacionamento"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["relationship"] = ans.primaryValue}
                                     questionId="5005"
                                 />
 
                                 <RadioGroupDemo2 label="O participante considera ter dificuldade para fazer amigos?"
                                     values={["Sim", "Não"]}
-                                    onAnswer={(ans: any) => answer["antissocial"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["antisocial"] = ans.primaryValue}
                                     questionId="5006"
                                 />
 
                                 <RadioGroupDemo2 label="Autoavaliação do desempenho escolar"
                                     values={["Péssimo", "Regular", "Bom", "Excelente"]}
-                                    onAnswer={(ans: any) => answer["autoavaliacao"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["selfEvaluation"] = ans.primaryValue}
                                     questionId="5007"
                                 />
 
                                 <RadioGroupDemo2 label="O participante pensa ou já pensou em desistir do curso de graduação?"
                                     values={["Não, nunca", "Sim, mas não penso mais", "Sim, ainda penso"]}
-                                    onAnswer={(ans: any) => answer["desistirCurso"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["quitCourse"] = ans.primaryValue}
                                     questionId="5008"
                                 />
 
                                 <RadioGroupDemo2 label="Número de horas de estudo, por semana, nos últimos 3 meses"
                                     values={["Poucas (<24h)", "Moderadas (>24h - <40h)", "Muitas (>40h)"]}
-                                    onAnswer={(ans: any) => answer["horasEstudo"] = ans.primaryValue}
+                                    onAnswer={(ans: any) => answer["hoursStudy"] = ans.primaryValue}
                                     questionId="5009"
                                 />
 
