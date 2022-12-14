@@ -105,11 +105,11 @@ export function Home() {
     if(currentSection == 18){
       let obj = {} as any;
 
-      for (let index = 1; index < 19; index++) {
+      for (let index = 2; index < 19; index++) {
         obj["sec"+(index-1)] = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, {primaryValue}) => a + Number(primaryValue), 0).toString();
       }
 
-      let sectionsToShow = Object.values(obj).map((value: any, index: any) => {if (Number(value) >=2){return index + 1}}).filter((ans: any) => ans);
+      let sectionsToShow = Object.values(obj).map((value: any, index: any) => {if (Number(value) >=2){return index + 2}}).filter((ans: any) => ans);
 
       if (sectionsToShow.length <=0 ){
         setCurrentSection(19)
@@ -202,16 +202,18 @@ export function Home() {
       
       isFinished.current = true;
 
-      let obj = {} as any;
+      let sectionSums = [] as any;
 
-      for (let index = 1; index < 19; index++) {
-        obj["sec"+(index-1)] = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, {primaryValue}) => a + Number(primaryValue), 0).toString()
+      for (let index = 2; index < 19; index++) {
+        let obj = {} as any;
+        obj.Sum = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, {primaryValue}) => a + Number(primaryValue), 0).toString()
+        obj.SectionId = index -1;
+        sectionSums.push(obj)
       }
-
       await useRegister('/form', {
-        ...answer,
+        sociodemographic: answer,
         answers,
-        ...obj
+        sectionSums
       })
       navigate("/agradecimentos");
     }

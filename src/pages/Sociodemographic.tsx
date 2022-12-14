@@ -30,7 +30,7 @@ export function Sociodemographic() {
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
-        if (Object.values(answer).findIndex((val: any) => ["", null, undefined].includes(val)) >= 0) {
+        if (Object.values(answer).findIndex((val: any) => {return["", null, undefined].includes(val)}) >= 0) {
             return toast.error("Por favor preencha todos os campos");
         }
         else {

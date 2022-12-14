@@ -17,20 +17,20 @@ import { Sociodemographic } from './pages/Sociodemographic';
 
 function App() {
   let answerObj = {
-    matricula: null,
+    enrollment: null,
     email: null,
-    idade: null,
-    sexo: null,
-    curso: null,
-    anoCurso: null,
-    semestre: null,
-    renda: null,
-    apoioFamiliar: null,
-    relacionamento: null,
-    antissocial: null,
-    autoavaliacao: null,
-    desistirCurso: null,
-    horasEstudo: null,
+    age: null,
+    gender: null,
+    course: null,
+    courseYear: null,
+    semester: null,
+    income: null,
+    familySupport: null,
+    relationship: null,
+    antisocial: null,
+    selfEvaluation: null,
+    quitCourse: null,
+    hoursStudy: null,
   }
   
   const [answer, setAnswer] = useState<any>(answerObj);
