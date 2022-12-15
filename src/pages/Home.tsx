@@ -194,9 +194,9 @@ export function Home() {
     let isQuestionFilter = indexRadioFilter >= 0
 
     let lastAnswer = isQuestionFilter ? answers.find(ans => ans.questionId == lastQuestion.id) : null
-    let isEnterSection = isQuestionFilter ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 5 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false
     let isToSkipSection = isQuestionFilter ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 0 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : nextStep.length == 0
-    let isToSkipTwoSections = isQuestionFilter && !isToSkipSection  && !isEnterSection? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 1 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false 
+    let isToSkipTwoSections = isQuestionFilter && !isToSkipSection ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 1 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false 
+
 
     if (lastSection) {
       
@@ -207,7 +207,7 @@ export function Home() {
       for (let index = 2; index < 19; index++) {
         let obj = {} as any;
         obj.Sum = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, {primaryValue}) => a + Number(primaryValue), 0).toString()
-        obj.SectionRef = index -1;
+        obj.SectionId = index -1;
         sectionSums.push(obj)
       }
       await useRegister('/form', {
@@ -218,32 +218,13 @@ export function Home() {
       navigate("/agradecimentos");
     }
 
-    if(isEnterSection || isToSkipTwoSections){
-      let questionToExclude = [] as any;
-      nextStep.forEach((question:any) => {
-        if(question.radios.findIndex((radio: any) => radio.action == 5) >= 0){
-          questionToExclude.push(question.id)
-
-      }
-      })
-      if(questionToExclude.length >0){
-        nextStep = nextStep.filter((question:any) => !questionToExclude.includes(question.id))
-      }
-      setActualStep(nextStep)
+    if (isToSkipTwoSections) {
+      setCurrentSection(currentSection + 2)
     }
     else if (isToSkipSection) {
       setCurrentSection(currentSection + 1)
       setActualStep(null)
     }
-    else if (lastQuestion.radios[indexRadioFilter].action == 1 && nextStep.findIndex((question:any) => question.radios.findIndex((radio: any) => radio.action == 1) >= 0 ) < 0) {
-      setCurrentSection(currentSection + 2)
-      setActualStep(null)
-    }
-    else if(lastQuestion.radios[indexRadioFilter].action == 5 && nextStep.findIndex((question:any) => question.radios.findIndex((radio: any) => radio.action != null) >= 0 ) < 0 ){
-      setCurrentSection(currentSection + 1)
-      setActualStep(null)
-    }
-    //fazer validação
     else if (!isToSkipSection) {
       setActualStep(nextStep)
     }

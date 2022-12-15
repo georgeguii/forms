@@ -32,7 +32,7 @@ export function RadioGroupDemo2(props: RadioProps) {
     let radios = props.values.map((item, index) => {
         return (
 
-            <div className='flex items-center gap gap-4' key={index + props.questionId}>
+            <div className='flex items-center gap-4' key={index + props.questionId}>
                 <RadioGroup.Item
                     className="bg-slate-100 w-5 h-5 rounded-xl shadow-md shadow-slate-800 hover:bg-slate-200"
                     value={item}
@@ -49,7 +49,7 @@ export function RadioGroupDemo2(props: RadioProps) {
     })
 
     return (
-        <div className='mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2'>
+        <div className='mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2 '>
             <LabelForm label={props.label} />
             <RadioGroup.Root className="flex flex-col gap-2.5 mt-3" defaultValue="default" aria-label="View density">
                 <div className='flex flex-col gap-2'>

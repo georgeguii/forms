@@ -42,7 +42,7 @@ export function RadioGroupDemo(props: RadioProps) {
         return props.values.map((item, index) => {
             if (!item.isChildren) return
             return (
-                <div className='flex items-center gap gap-4' key={index + props.questionId + "children"}>
+                <div className='flex items-center gap-4' key={index + props.questionId + "children"}>
                     <RadioGroup.Item
                         className="bg-white w-6 h-6 rounded-xl shadow-md shadow-slate-800 hover:bg-slate-200"
                         value={`${item.value}#${index}#children`}
@@ -64,7 +64,7 @@ export function RadioGroupDemo(props: RadioProps) {
 
         return (
             
-            <div className='flex items-center gap gap-4' key={index + props.questionId}>
+            <div className='flex items-center gap-4' key={index + props.questionId}>
                 <RadioGroup.Item
                     className="bg-white w-6 h-6 rounded-xl shadow-md shadow-slate-800 hover:bg-slate-200"
                     value={`${item.value}#${index}`}

@@ -26,7 +26,7 @@ export function CheckAge() {
     }
 
     return (
-        <form onSubmit={passSectionOrStep} className="flex flex-col justify-start items-center min-h-[83vh]">
+        <form onSubmit={passSectionOrStep} className="flex flex-col justify-start items-center min-h-[83vh] bg-slate-100">
 
             <div>
                 <RadioGroupDemo2 label="Você é maior de idade (possui no mínimo 18 anos de idade completos)?"

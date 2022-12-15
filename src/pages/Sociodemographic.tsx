@@ -42,7 +42,7 @@ export function Sociodemographic() {
     return (
         <>
             {checkAge ?
-                <div className="flex justify-center items-center mt-2">
+                <div className="flex justify-center items-center mt-2 bg-slate-100">
                     <div className=" flex flex-col justify-center items-center ">
                         {/* bg-white rounded-md border-2 */}
 
