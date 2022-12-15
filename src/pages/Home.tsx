@@ -24,6 +24,7 @@ interface section {
   name: string,
   questions: any,
   id: number
+  description?: string;
 }
 
 export function Home() {
@@ -204,7 +205,7 @@ export function Home() {
 
       let sectionSums = [] as any;
 
-      for (let index = 2; index < 19; index++) {
+      for (let index = 2; index < 28; index++) {
         let obj = {} as any;
         obj.Sum = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, {primaryValue}) => a + Number(primaryValue), 0).toString()
         obj.SectionRef = index -1;
@@ -259,6 +260,8 @@ export function Home() {
           <div className='my-3 ml-2'>
             {sections ? generateProgress(): ""}
           </div>
+
+          <h1 className='text-bluePurple-500 text-base mt-4 font-bold ml-2'>{sections ? sections[currentSection].description ?? "" : ""}</h1>
           <hr />
           {isFetching && <span>Carregando...</span>}
           {generateQuestions()}
