@@ -66,7 +66,7 @@ export function RadioGroupDemo(props: RadioProps) {
             
             <div className='flex items-center gap gap-4' key={index + props.questionId}>
                 <RadioGroup.Item
-                    className="bg-white w-6 h-6 rounded-xl shadow-md shadow-slate-800 hover:bg-slate-200"
+                    className="bg-white min-w-[24px] h-[24px] rounded-xl shadow-md shadow-slate-800 hover:bg-slate-200"
                     value={`${item.value}#${index}`}
                     onClick={e => {
                         if(props.showOtherType && lastRadioIndex != Number((e.currentTarget.value).split('#')[0])){
