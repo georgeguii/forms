@@ -62,8 +62,8 @@ export function Home() {
 
     if (!sections) return;
 
-    if (actualStep?.find((q: any) => q.id == 58)) {
-      if (answers.findIndex(ans => [57, 56, 55].includes(Number(ans.questionId)) && ans.primaryValue == "1") < 0) {
+    if (actualStep?.find((q: any) => q.id == 59)) {
+      if (answers.findIndex(ans => [58, 57, 56].includes(Number(ans.questionId)) && ans.primaryValue == "1") < 0) {
         actualStep.shift();
       }
 
@@ -72,7 +72,7 @@ export function Home() {
     let questions = actualStep?.length > 0 ? actualStep : []
     if (questions.length == 0) {
       if (sections[currentSection].name == "PÂNICO") {
-        if (answers.findIndex(ans => [75, 69].includes(ans.questionId)) <= 0) {
+        if (answers.findIndex(ans => [76, 70].includes(ans.questionId)) <= 0) {
           setCurrentSection(currentSection + 1)
         }
       }
