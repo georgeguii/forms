@@ -14,7 +14,7 @@ const ProgressDemo = (props:any) => {
     <Progress.Root className="ProgressRoot" value={progress}>
       <Progress.Indicator
         className="ProgressIndicator"
-        style={{ transform: `translateX(-${100 - progress*5}%)` }}
+        style={{ transform: `translateX(-${100 - progress*3.7}%)` }}
       />
     </Progress.Root>
   );
