@@ -266,7 +266,7 @@ export function Home() {
               {
 
                 sections && sections[currentSection].name == "AUDIT-C" ?
-              <table className='mt-3'  style={{ width: "25%", border: "2px solid black"}}>
+                <table className='mt-3  w-2/5 max-[1600px]:w-2/4 max-[1100px]:w-3/5 max-[700px]:w-4/5 max-[400px]:w-full border-2 border-black'>
                 <tr className="border-b border-black">
                   <td>
                     <strong>Quantidade</strong>
