@@ -17,7 +17,7 @@ interface Answer {
   secondaryValue: string;
   radioIndex: string;
   type: number;
-  sectionId?: number; 
+  sectionId?: number;
 }
 
 interface section {
@@ -34,7 +34,7 @@ export function Home() {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [actualStep, setActualStep] = useState<any>();
   const { answer, setAnswer } = useContext(AnswerContext);
-  
+
   const navigate = useNavigate();
 
   var isFinished = useRef(false)
@@ -43,9 +43,9 @@ export function Home() {
   let count = useRef(0)
 
   useEffect(() => {
-      if (count.current == 0 && Object.values(answer).findIndex((val:any) =>  ["", null, undefined].includes(val)) >= 0) {
-          navigate("/agradecimentos")
-      }
+    if (count.current == 0 && Object.values(answer).findIndex((val: any) => ["", null, undefined].includes(val)) >= 0) {
+      navigate("/agradecimentos")
+    }
 
   }, [answer]);
 
@@ -93,7 +93,7 @@ export function Home() {
 
   }
 
-  function convertDate(date:string){
+  function convertDate(date: string) {
     if (!date) return date;
     const [year, month, day] = date.split('-');
     return [month, day, year].join('/');
@@ -103,45 +103,45 @@ export function Home() {
   function generateQuestions() {
     if (!currentStep) return;
 
-    if(currentSection == 18){
+    if (currentSection == 18) {
       let obj = {} as any;
 
       for (let index = 2; index < 19; index++) {
-        obj["sec"+(index-1)] = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, {primaryValue}) => a + Number(primaryValue), 0).toString();
+        obj["sec" + (index - 1)] = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, { primaryValue }) => a + Number(primaryValue), 0).toString();
       }
 
-      let sectionsToShow = Object.values(obj).map((value: any, index: any) => {if (Number(value) >=2){return index + 2}}).filter((ans: any) => ans);
+      let sectionsToShow = Object.values(obj).map((value: any, index: any) => { if (Number(value) >= 2) { return index + 2 } }).filter((ans: any) => ans);
 
-      if (sectionsToShow.length <=0 ){
+      if (sectionsToShow.length <= 0) {
         setCurrentSection(19)
         return;
       }
 
-      if(isFirstSection19.current){
-      handleAnswers({primaryValue:"", secondaryValue:"", radioIndex:"", questionId:112, sectionId:19, type:1})
-      handleAnswers({sectionId:19, type:0, primaryValue: "", questionId:113, secondaryValue:"", radioIndex:""})
-      isFirstSection19.current = false;
+      if (isFirstSection19.current) {
+        handleAnswers({ primaryValue: "", secondaryValue: "", radioIndex: "", questionId: 112, sectionId: 19, type: 1 })
+        handleAnswers({ sectionId: 19, type: 0, primaryValue: "", questionId: 113, secondaryValue: "", radioIndex: "" })
+        isFirstSection19.current = false;
       }
 
       return <>
 
-      <RadioGroupDemo2 label="Você me disse que teve alguns problemas durante a semana passada, qual desses problemas mais o incomodou?"
-      values={sections ? sections?.filter((sec :any) => sectionsToShow.includes(sec.id)).map((sec:any) => sec.name): [] }
-      onAnswer={(ans: any) => handleAnswers({...ans, questionId:112, sectionId:19, type:1})}
-      questionId="112"
-      />
-      <div className="mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2">
-      <LabelForm label="Quando este problema começou? " />
+        <RadioGroupDemo2 label="Você me disse que teve alguns problemas durante a semana passada, qual desses problemas mais o incomodou?"
+          values={sections ? sections?.filter((sec: any) => sectionsToShow.includes(sec.id)).map((sec: any) => sec.name) : []}
+          onAnswer={(ans: any) => handleAnswers({ ...ans, questionId: 112, sectionId: 19, type: 1 })}
+          questionId="112"
+        />
+        <div className="mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2">
+          <LabelForm label="Quando este problema começou? " />
           <input className="bg-slate-100 py-3 px-4 rounded text-sm mt-1
           border-b-slate-500 text-gray-700
           placeholder:text-gray-400
           hover:border-gray-800
           focus:text-gray-800
           focus:border-gray-50 "
-          onChange={(e: any) => handleAnswers({sectionId:19, type:0, primaryValue: convertDate(e.target.value), questionId:113, secondaryValue:"", radioIndex:""})} type="date"></input>
-      </div>
+            onChange={(e: any) => handleAnswers({ sectionId: 19, type: 0, primaryValue: convertDate(e.target.value), questionId: 113, secondaryValue: "", radioIndex: "" })} type="date"></input>
+        </div>
       </>
-      
+
     }
 
 
@@ -155,7 +155,7 @@ export function Home() {
           return <RadioGroupDemo sectionId={sections != null ? sections[currentSection].id : undefined} questionType={question.type} label={question.label} values={question.radios} questionId={question.id} onAnswer={(answer: Answer) => handleAnswers(answer)} key={question.id} showRadioWithChildren={true} questionDescription={question.description} />
         case 3:
           return <RadioGroupDemo sectionId={sections != null ? sections[currentSection].id : undefined} questionType={question.type} label={question.label} values={question.radios} questionId={question.id} onAnswer={(answer: Answer) => handleAnswers(answer)} showDescription={true} key={question.id} questionDescription={question.description} />
-        case 4: 
+        case 4:
           return <RadioGroupDemo sectionId={sections != null ? sections[currentSection].id : undefined} questionType={question.type} label={question.label} values={question.radios} questionId={question.id} onAnswer={(answer: Answer) => handleAnswers(answer)} showOtherType={true} key={question.id} questionDescription={question.description} />
       }
     })
@@ -170,14 +170,14 @@ export function Home() {
     setAnswers(answers)
   }
 
-  function generateProgress(){
-    return <ProgressDemo value={currentSection}/>
+  function generateProgress() {
+    return <ProgressDemo value={currentSection} />
   }
 
   async function passSectionOrStep(event: FormEvent) {
     event.preventDefault();
 
-    if(isFinished.current) return;
+    if (isFinished.current) return;
 
     //Valida se todas as questoes foram respondidas, incluindo o campo secundario se houver
     if (sections) {
@@ -185,8 +185,8 @@ export function Home() {
 
       let questionsWithSecondaryValue = sections[currentSection].questions.filter((question: any) => [2, 3].includes(question.type)).map((question: any) => ({ id: question.id, firstRadioValue: question.radios[0].value }))
       if (questionsWithSecondaryValue.findIndex((q: any) => answers.findIndex(ans => (ans.questionId == q.id && ans.primaryValue != q.firstRadioValue && !ans.secondaryValue)) >= 0) >= 0) return toast.error("Por favor preencha todos os campos");
-      
-      let questionsWithSecondaryValue2 = sections[currentSection].questions.filter((question: any) => 4 == question.type).map((question: any) => ({ id: question.id, lastRadioValue: question.radios[question.radios.length -1].value }))
+
+      let questionsWithSecondaryValue2 = sections[currentSection].questions.filter((question: any) => 4 == question.type).map((question: any) => ({ id: question.id, lastRadioValue: question.radios[question.radios.length - 1].value }))
       if (questionsWithSecondaryValue2.findIndex((q: any) => answers.findIndex(ans => (ans.questionId == q.id && ans.primaryValue == q.lastRadioValue && !ans.secondaryValue)) >= 0) >= 0) return toast.error("Por favor preencha todos os campos");
     }
 
@@ -197,18 +197,18 @@ export function Home() {
     let lastAnswer = isQuestionFilter ? answers.find(ans => ans.questionId == lastQuestion.id) : null
     let isEnterSection = isQuestionFilter ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 5 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false
     let isToSkipSection = isQuestionFilter ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 0 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : nextStep.length == 0
-    let isToSkipTwoSections = isQuestionFilter && !isToSkipSection  && !isEnterSection? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 1 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false 
+    let isToSkipTwoSections = isQuestionFilter && !isToSkipSection && !isEnterSection ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 1 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false
 
     if (lastSection) {
-      
+
       isFinished.current = true;
 
       let sectionSums = [] as any;
 
       for (let index = 2; index < 28; index++) {
         let obj = {} as any;
-        obj.Sum = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, {primaryValue}) => a + Number(primaryValue), 0).toString()
-        obj.SectionRef = index -1;
+        obj.Sum = answers.filter(ans => ans.type == 1 && ans.sectionId == index).reduce((a, { primaryValue }) => a + Number(primaryValue), 0).toString()
+        obj.SectionRef = index - 1;
         sectionSums.push(obj)
       }
       await useRegister('/form', {
@@ -219,16 +219,16 @@ export function Home() {
       navigate("/agradecimentos");
     }
 
-    if(isEnterSection || isToSkipTwoSections){
+    if (isEnterSection || isToSkipTwoSections) {
       let questionToExclude = [] as any;
-      nextStep.forEach((question:any) => {
-        if(question.radios.findIndex((radio: any) => radio.action == 5) >= 0){
+      nextStep.forEach((question: any) => {
+        if (question.radios.findIndex((radio: any) => radio.action == 5) >= 0) {
           questionToExclude.push(question.id)
 
-      }
+        }
       })
-      if(questionToExclude.length >0){
-        nextStep = nextStep.filter((question:any) => !questionToExclude.includes(question.id))
+      if (questionToExclude.length > 0) {
+        nextStep = nextStep.filter((question: any) => !questionToExclude.includes(question.id))
       }
       setActualStep(nextStep)
     }
@@ -236,11 +236,11 @@ export function Home() {
       setCurrentSection(currentSection + 1)
       setActualStep(null)
     }
-    else if (lastQuestion.radios[indexRadioFilter].action == 1 && nextStep.findIndex((question:any) => question.radios.findIndex((radio: any) => radio.action == 1) >= 0 ) < 0) {
+    else if (lastQuestion.radios[indexRadioFilter].action == 1 && nextStep.findIndex((question: any) => question.radios.findIndex((radio: any) => radio.action == 1) >= 0) < 0) {
       setCurrentSection(currentSection + 2)
       setActualStep(null)
     }
-    else if(lastQuestion.radios[indexRadioFilter].action == 5 && nextStep.findIndex((question:any) => question.radios.findIndex((radio: any) => radio.action != null) >= 0 ) < 0 ){
+    else if (lastQuestion.radios[indexRadioFilter].action == 5 && nextStep.findIndex((question: any) => question.radios.findIndex((radio: any) => radio.action != null) >= 0) < 0) {
       setCurrentSection(currentSection + 1)
       setActualStep(null)
     }
@@ -253,26 +253,96 @@ export function Home() {
 
   return (
     <>
-    {answer? 
-      <div className="flex flex-col justify-center items-center bg-slate-100">
-        <form className="min-h-[84vh] max-w-4xl my-5" onSubmit={passSectionOrStep}>
-          <h1 className='text-bluePurple-500 text-2xl font-bold ml-2'>{sections ? sections[currentSection].name : ""}</h1>
-          <div className='my-3 ml-2'>
-            {sections ? generateProgress(): ""}
-          </div>
+      {answer ?
+        <div className="flex flex-col justify-center items-center bg-slate-100">
+          <form className="min-h-[84vh] max-w-4xl my-5" onSubmit={passSectionOrStep}>
+            <h1 className='text-bluePurple-500 text-2xl font-bold ml-2'>{sections ? sections[currentSection].name : ""}</h1>
+            <div className='my-3 ml-2'>
+              {sections ? generateProgress() : ""}
+            </div>
 
-          <h1 className='text-bluePurple-500 text-base mt-4 font-bold ml-2'>{sections ? sections[currentSection].description ?? "" : ""}</h1>
-          <hr />
-          {isFetching && <span>Carregando...</span>}
-          {generateQuestions()}
+            <h1 className='text-bluePurple-500 text-base mt-4 font-bold ml-2'>{sections ? sections[currentSection].description ?? "" : ""}</h1>
+            <div >
+              {
 
-          <div className='flex flex-col  mx-1'>
-            {sections ? <Button value={lastSection && nextStep.length == 0 ? 'Finalizar' : 'Continuar'} /> : ""}
-          </div>
-        </form>
-      </div>
-      :
-      setAnswer(undefined)
+                sections && sections[currentSection].name == "AUDIT-C" ?
+              <table className='mt-3'  style={{ width: "25%", border: "2px solid black"}}>
+                <tr className="border-b border-black">
+                  <td>
+                    <strong>Quantidade</strong>
+                  </td>
+                  <td>
+                    <strong>Equivale à</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <th colSpan={2}>DESTILADOS</th>
+                </tr>
+                <tr>
+                  <td>1 drink com água ou gelo</td>
+                  <td>1 dose</td>
+                </tr>
+                <tr>
+                  <td>1 dose de aguardente (25ml)</td>
+                  <td>1 dose</td>
+                </tr>
+                <tr>
+                  <td>1 dose destilado (whisky, vodka) (50ml)</td>
+                  <td>2 dose</td>
+                </tr>
+                <tr className="border-b border-black">
+                  <td>1 garrafa de aguardente ou whisky (750ml)</td>
+                  <td>30 dose</td>
+                </tr>
+
+
+                <tr>
+                  <th colSpan={2}>VINHO</th>
+                </tr>
+                <tr>
+                  <td>1 copo de vinho (100 ml)</td>
+                  <td>1 dose</td>
+                </tr>
+                <tr>
+                  <td>1 "cooler" de vinho</td>
+                  <td>1 dose</td>
+                </tr>
+                <tr className="border-b border-black">
+                  <td>1 copo de sherry ou Vinho do Porto</td>
+                  <td>2 dose</td>
+                </tr>
+
+                <tr>
+                  <th colSpan={2}>CERVEJA</th>
+                </tr>
+                <tr>
+                  <td>1 lata/garrafa pequena de cerveja (350ml)</td>
+                  <td>1,5 dose</td>
+                </tr>
+                <tr>
+                  <td>1 garrafa de 600 ml</td>
+                  <td>3 dose</td>
+                </tr>
+                <tr>
+                  <td>1 copo chopp (200ml)</td>
+                  <td>1 dose</td>
+                </tr>
+              </table>
+              :
+              ""
+}
+            </div>
+            <hr />
+            {isFetching && <span>Carregando...</span>}
+            {generateQuestions()}
+
+            <div className='flex flex-col  mx-1'>
+              {sections ? <Button value={lastSection && nextStep.length == 0 ? 'Finalizar' : 'Continuar'} /> : ""}
+            </div>
+          </form>
+        </div>
+        :
+        setAnswer(undefined)
       }
     </>
   )
