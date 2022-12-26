@@ -266,71 +266,71 @@ export function Home() {
               {
 
                 sections && sections[currentSection].name == "AUDIT-C" ?
-                <table className='mt-3  w-2/5 max-[1600px]:w-2/4 max-[1100px]:w-3/5 max-[700px]:w-4/5 max-[400px]:w-full border-2 border-black'>
-                <tr className="border-b border-black">
-                  <td>
-                    <strong>Quantidade</strong>
-                  </td>
-                  <td>
-                    <strong>Equivale à</strong>
-                  </td>
-                </tr>
-                <tr>
-                  <th colSpan={2}>DESTILADOS</th>
-                </tr>
-                <tr>
-                  <td>1 drink com água ou gelo</td>
-                  <td>1 dose</td>
-                </tr>
-                <tr>
-                  <td>1 dose de aguardente (25ml)</td>
-                  <td>1 dose</td>
-                </tr>
-                <tr>
-                  <td>1 dose destilado (whisky, vodka) (50ml)</td>
-                  <td>2 dose</td>
-                </tr>
-                <tr className="border-b border-black">
-                  <td>1 garrafa de aguardente ou whisky (750ml)</td>
-                  <td>30 dose</td>
-                </tr>
+                  <table className='my-3 w-full border-2 border-black'>
+                    <tr className="border-b border-black">
+                      <td>
+                        <strong>Quantidade</strong>
+                      </td>
+                      <td>
+                        <strong>Equivale à</strong>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colSpan={2}>DESTILADOS</th>
+                    </tr>
+                    <tr>
+                      <td>1 drink com água ou gelo</td>
+                      <td>1 dose</td>
+                    </tr>
+                    <tr>
+                      <td>1 dose de aguardente (25ml)</td>
+                      <td>1 dose</td>
+                    </tr>
+                    <tr>
+                      <td>1 dose destilado (whisky, vodka) (50ml)</td>
+                      <td>2 dose</td>
+                    </tr>
+                    <tr className="border-b border-black">
+                      <td>1 garrafa de aguardente ou whisky (750ml)</td>
+                      <td>30 dose</td>
+                    </tr>
 
 
-                <tr>
-                  <th colSpan={2}>VINHO</th>
-                </tr>
-                <tr>
-                  <td>1 copo de vinho (100 ml)</td>
-                  <td>1 dose</td>
-                </tr>
-                <tr>
-                  <td>1 "cooler" de vinho</td>
-                  <td>1 dose</td>
-                </tr>
-                <tr className="border-b border-black">
-                  <td>1 copo de sherry ou Vinho do Porto</td>
-                  <td>2 dose</td>
-                </tr>
+                    <tr>
+                      <th colSpan={2}>VINHO</th>
+                    </tr>
+                    <tr>
+                      <td>1 copo de vinho (100 ml)</td>
+                      <td>1 dose</td>
+                    </tr>
+                    <tr>
+                      <td>1 "cooler" de vinho</td>
+                      <td>1 dose</td>
+                    </tr>
+                    <tr className="border-b border-black">
+                      <td>1 copo de sherry ou Vinho do Porto</td>
+                      <td>2 dose</td>
+                    </tr>
 
-                <tr>
-                  <th colSpan={2}>CERVEJA</th>
-                </tr>
-                <tr>
-                  <td>1 lata/garrafa pequena de cerveja (350ml)</td>
-                  <td>1,5 dose</td>
-                </tr>
-                <tr>
-                  <td>1 garrafa de 600 ml</td>
-                  <td>3 dose</td>
-                </tr>
-                <tr>
-                  <td>1 copo chopp (200ml)</td>
-                  <td>1 dose</td>
-                </tr>
-              </table>
-              :
-              ""
-}
+                    <tr>
+                      <th colSpan={2}>CERVEJA</th>
+                    </tr>
+                    <tr>
+                      <td>1 lata/garrafa pequena de cerveja (350ml)</td>
+                      <td>1,5 dose</td>
+                    </tr>
+                    <tr>
+                      <td>1 garrafa de 600 ml</td>
+                      <td>3 dose</td>
+                    </tr>
+                    <tr>
+                      <td>1 copo chopp (200ml)</td>
+                      <td>1 dose</td>
+                    </tr>
+                  </table>
+                  :
+                  ""
+              }
             </div>
             <hr />
             {isFetching && <span>Carregando...</span>}
