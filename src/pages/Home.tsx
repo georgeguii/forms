@@ -205,7 +205,7 @@ export function Home() {
 
       let sectionSums = [] as any;
 
-      for (let index = 1; index < 28; index++) {
+      for (let index = 2; index < 28; index++) {
         let obj = {} as any;
         obj.Sum = answers.filter(ans => ans.type == 1 && ans.sectionId == index && ![9,10,11,16,17,23,24,29,30,36,37,43,44,61,62,68,69,81,82,88,89,95,96,102,103,86,87].includes(ans.questionId)).reduce((a, { primaryValue }) => a + Number(primaryValue), 0).toString()
         obj.SectionRef = index - 1;
