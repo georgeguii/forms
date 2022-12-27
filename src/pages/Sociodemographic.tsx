@@ -30,7 +30,7 @@ export function Sociodemographic() {
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
-        if (Object.values(answer).findIndex((val: any) => {return["", null, undefined].includes(val)}) >= 0) {
+        if (Object.values(answer).findIndex((val: any) => { return ["", null, undefined].includes(val) }) >= 0) {
             return toast.error("Por favor preencha todos os campos");
         }
         else {
@@ -65,9 +65,15 @@ export function Sociodemographic() {
                                 />
 
                                 <RadioGroupDemo2 label="Graduação que está cursando atualmente na UNEB"
-                                    values={["Enfermagem", "Medicina"]}
+                                    values={["Enfermagem", "Medicina", "Fonoaudiologia", "Fisioterapia", "Farmácia", "Nutrição"]}
                                     onAnswer={(ans: any) => answer["course"] = ans.primaryValue}
                                     questionId="5002"
+                                />
+
+                                <RadioGroupDemo2 label="Qual é sua cor ou raça?"
+                                    values={["Negra", "Parda", "Amarela", "Indígena", "Branca", "Não sei"]}
+                                    onAnswer={(ans: any) => answer["racial"] = ans.primaryValue}
+                                    questionId="6000"
                                 />
 
                                 <div className="mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2 ">
@@ -278,37 +284,37 @@ export function Sociodemographic() {
 
 
                                 <RadioGroupDemo2 label="Eu considero ter uma rede de apoio familiar sólida"
-                                    values={["Concordo fortemente", "Concordo", "Discordo", "Discordo fortemente"]}
+                                    values={["Concordo fortemente", "Concordo", "Discordo", "Discordo fortemente", "Não sei"]}
                                     onAnswer={(ans: any) => answer["familySupport"] = ans.primaryValue}
                                     questionId="5004"
                                 />
 
                                 <RadioGroupDemo2 label="Status de relacionamento"
-                                    values={["Solteiro", "Namorando", "Casado", "Viúvo"]}
+                                    values={["Solteiro", "Namorando", "Casado", "União Estável", "Divorciado", "Viúvo", "Desquitado ou separado judicialmente", "Não sei"]}
                                     onAnswer={(ans: any) => answer["relationship"] = ans.primaryValue}
                                     questionId="5005"
                                 />
 
                                 <RadioGroupDemo2 label="O participante considera ter dificuldade para fazer amigos?"
-                                    values={["Sim", "Não"]}
+                                    values={["Sim", "Não", "Não sei"]}
                                     onAnswer={(ans: any) => answer["antisocial"] = ans.primaryValue}
                                     questionId="5006"
                                 />
 
                                 <RadioGroupDemo2 label="Autoavaliação do desempenho escolar"
-                                    values={["Péssimo", "Regular", "Bom", "Excelente"]}
+                                    values={["Péssimo", "Regular", "Bom", "Excelente", "Não sei"]}
                                     onAnswer={(ans: any) => answer["selfEvaluation"] = ans.primaryValue}
                                     questionId="5007"
                                 />
 
                                 <RadioGroupDemo2 label="O participante pensa ou já pensou em desistir do curso de graduação?"
-                                    values={["Não, nunca", "Sim, mas não penso mais", "Sim, ainda penso"]}
+                                    values={["Não, nunca", "Sim, mas não penso mais", "Sim, ainda penso", "Não sei"]}
                                     onAnswer={(ans: any) => answer["quitCourse"] = ans.primaryValue}
                                     questionId="5008"
                                 />
 
                                 <RadioGroupDemo2 label="Número de horas de estudo, por semana, nos últimos 3 meses"
-                                    values={["Poucas (<24h)", "Moderadas (>24h - <40h)", "Muitas (>40h)"]}
+                                    values={["Poucas (<24h)", "Moderadas (>24h - <40h)", "Muitas (>40h)", "Não sei"]}
                                     onAnswer={(ans: any) => answer["hoursStudy"] = ans.primaryValue}
                                     questionId="5009"
                                 />
