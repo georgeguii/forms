@@ -30,7 +30,7 @@ export function CheckAge() {
     return (
         <form onSubmit={passSectionOrStep} className="flex flex-col justify-start items-center min-h-[83vh] bg-slate-100">
             <div>
-                <h5 className="my-5 text-lg font-semibold">Termo de Consentimento Livre e Esclarecido</h5>
+                <h5 className="text-center my-5 text-lg font-semibold">Termo de Consentimento Livre e Esclarecido</h5>
                 <div className=" max-w-2xl text-justify overflow-y-scroll max-h-[25rem] p-5 bg-gray-200
                     max-[430px]:text-sm"
                 >
