@@ -295,7 +295,6 @@ export function Home() {
                       <td>30 dose</td>
                     </tr>
 
-
                     <tr>
                       <th colSpan={2}>VINHO</th>
                     </tr>

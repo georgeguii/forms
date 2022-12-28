@@ -11,21 +11,22 @@ export function TextField(props: TextProps) {
 
     const [description, setdescription] = useState<string>("");
 
-    useEffect(() => {sendAnswer(description) }, [description]);
+    useEffect(() => { sendAnswer(description) }, [description]);
 
     function sendAnswer(description: string) {
-        if (props.onAnswer){
-          props.onAnswer(
-              {
-                  primaryValue: description || null,
-                  secondaryValue: null,
-                  questionId: props.questionId,
-                  radioIndex: null
-              })
-      }}
-    
+        if (props.onAnswer) {
+            props.onAnswer(
+                {
+                    primaryValue: description || null,
+                    secondaryValue: null,
+                    questionId: props.questionId,
+                    radioIndex: null
+                })
+        }
+    }
+
 
     return (
-        <InputText label={props.label} key={props.questionId} onChange={(e:any) => setdescription(e.target.value)} type={props.type ?? "text"} min={props.min ?? "" }  max={props.max ?? "" }/>
+        <InputText label={props.label} key={props.questionId} onChange={(e: any) => setdescription(e.target.value)} type={props.type ?? "text"} min={props.min ?? ""} max={props.max ?? ""} />
     )
 };

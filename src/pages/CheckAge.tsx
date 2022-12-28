@@ -31,7 +31,9 @@ export function CheckAge() {
         <form onSubmit={passSectionOrStep} className="flex flex-col justify-start items-center min-h-[83vh] bg-slate-100">
             <div>
                 <h5 className="my-5 text-lg font-semibold">Termo de Consentimento Livre e Esclarecido</h5>
-                <div className=" max-w-2xl text-justify overflow-y-scroll max-h-[25rem] p-5 bg-gray-200">
+                <div className=" max-w-2xl text-justify overflow-y-scroll max-h-[25rem] p-5 bg-gray-200
+                    max-[430px]:text-sm"
+                >
                     Prezado Participante,
 
                     Gostaríamos de lhe convidar para participar da pesquisa sobre Saúde Mental entre estudantes de Medicina e Enfermagem da UNEB, que lhe apresentamos agora em linhas gerais. É pesquisa coordenada pelo pesquisador responsável e psiquiatra Prof. Dr. Carlos Tadeu da Silva Lima, do Curso de Medicina/Departamento de Ciências da Vida I (DCV1), com a colaboração dos acadêmicos pesquisadores Adriano Tito Souza Vieira e Benjamim Messias de Souza Filho. Não há aqui nenhum financiamento externo. Observa-se que alguns problemas de saúde mental, esgotamento mental (burnout), hábitos de vida, tais como consumo de álcool, e estresse são mais frequentes entre estudantes universitários do que na população geral, mas existem poucos dados sobre esses fenômenos em nossa Instituição.
@@ -55,7 +57,7 @@ export function CheckAge() {
                         type="checkbox"
                         id="agree"
                         name="agree"
-                        className="mr-2"
+                        className="mx-2"
                         checked={agreeChecked}
                         onChange={() => setAgreeChecked(!agreeChecked)}
                     />
