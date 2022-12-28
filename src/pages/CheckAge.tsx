@@ -61,7 +61,7 @@ export function CheckAge() {
                         checked={agreeChecked}
                         onChange={() => setAgreeChecked(!agreeChecked)}
                     />
-                    <label htmlFor="agree" className="font-semibold">
+                    <label htmlFor="agree" className="font-semibold max-[520px]:text-sm">
                         Eu declaro compreender e aceitar os termos de consentimento.
                     </label>
                 </div>
