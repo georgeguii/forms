@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 
 export function Header() {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <header className="flex justify-between items-center h-[10vh] bg-gradient-to-t from-cyan-500 to-cyan-700">
