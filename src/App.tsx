@@ -39,8 +39,8 @@ function App() {
     <div>
       <Toaster position="top-right" reverseOrder={false} />
       <AnswerContext.Provider value={{ checkAge, setCheckAge, answer }}>
+        <Header />
         <Router>
-          <Header />
           <Routes>
             <Route path="/" element={<CheckAge />} />
             <Route path="/sociodemografico" element={<Sociodemographic />} />
