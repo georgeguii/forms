@@ -12,7 +12,7 @@ export function Header() {
       {/* <span className="ml-10 text-white font-bold text-4xl">Icon</span> */}
       <img
         src={Logo}
-        className="ml-10 max-sm:ml-1 max-w-[14rem]"
+        className="ml-10 max-sm:ml-1 max-sm:max-w-[11rem] max-w-[14rem]"
         alt="Logo do projeto"
       />
 
