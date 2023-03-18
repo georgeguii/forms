@@ -14,7 +14,7 @@ interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
     questionDescription: string;
     showOtherType?: boolean;
     questionType: number;
-    sectionId? : number
+    sectionId?: number
 }
 
 export function RadioGroupDemo(props: RadioProps) {
@@ -34,7 +34,7 @@ export function RadioGroupDemo(props: RadioProps) {
                 questionId: props.questionId,
                 radioIndex: radioIndex,
                 type: props.questionType,
-                sectionId: props.sectionId 
+                sectionId: props.sectionId
             })
     }
 
@@ -63,13 +63,13 @@ export function RadioGroupDemo(props: RadioProps) {
         if (item.isChildren) return
 
         return (
-            
+
             <div className='flex items-center gap-4' key={index + props.questionId}>
                 <RadioGroup.Item
                     className="bg-white min-w-[24px] h-[24px] rounded-xl shadow-md shadow-slate-800 hover:bg-slate-200"
                     value={`${item.value}#${index}`}
                     onClick={e => {
-                        if(props.showOtherType && lastRadioIndex != Number((e.currentTarget.value).split('#')[0])){
+                        if (props.showOtherType && lastRadioIndex != Number((e.currentTarget.value).split('#')[0])) {
                             setdescription("")
                         }
                         else if ((e.currentTarget.value).split('#')[0] == "0") {
@@ -77,7 +77,7 @@ export function RadioGroupDemo(props: RadioProps) {
                         }
                         setRadioValue((e.currentTarget.value).split('#')[0])
                         setRadioIndex(Number((e.currentTarget.value).split('#')[1]))
-                        setLastRadioIndex(props.values.length -1)
+                        setLastRadioIndex(props.values.length - 1)
                     }}
                 >
                     <RadioGroup.Indicator className="RadioGroupIndicator" />
@@ -90,7 +90,7 @@ export function RadioGroupDemo(props: RadioProps) {
     return (
         <div className='mt-4 pl-8 pr-6 py-8 w-full bg-white rounded-md border-2'>
             <LabelForm label={props.label} />
-            <span className='text-xs'>{props.questionDescription}</span>
+            <span className='text-sm'>{props.questionDescription}</span>
             <RadioGroup.Root className="flex flex-col gap-2.5 mt-3" defaultValue="default" aria-label="View density">
                 <div className='flex flex-col gap-2'>
                     {radios}
