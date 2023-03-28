@@ -202,7 +202,7 @@ export function Home() {
     if(lastQuestion.id == 50 ){
 
       console.log(answers)
-      if( answers.filter(ans => [50, 49].includes(ans.questionId) && ans.primaryValue == "1").length > 0 ) isEnterSection = true;
+      if( answers.filter(ans => [50, 49].includes(ans.questionId) && ans.radioIndex.toString() == "1").length > 0 ) isEnterSection = true;
     } 
 
     if (lastSection) {
