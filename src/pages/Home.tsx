@@ -196,6 +196,10 @@ export function Home() {
 
     let lastAnswer = isQuestionFilter ? answers.find(ans => ans.questionId == lastQuestion.id) : null
     let isEnterSection = isQuestionFilter ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 5 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false
+    
+    
+    if(lastQuestion.id.toString() == "50" ) isEnterSection = true;
+    
     let isToSkipSection = isQuestionFilter ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 0 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : nextStep.length == 0
     let isToSkipTwoSections = isQuestionFilter && !isToSkipSection && !isEnterSection ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 1 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false
 
