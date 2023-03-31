@@ -198,6 +198,8 @@ export function Home() {
     let isEnterSection = isQuestionFilter ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 5 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false
     let isToSkipSection = isQuestionFilter ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 0 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : nextStep.length == 0
     let isToSkipTwoSections = isQuestionFilter && !isToSkipSection && !isEnterSection ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 1 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false
+
+    console.log(answers)
     
     if(lastQuestion.id == 10 ){
       if( answers.filter(ans => [10, 9].includes(ans.questionId) && ans.radioIndex.toString() == "1").length > 0 ) isEnterSection = true;
