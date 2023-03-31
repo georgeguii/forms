@@ -200,7 +200,10 @@ export function Home() {
     let isToSkipTwoSections = isQuestionFilter && !isToSkipSection && !isEnterSection ? lastAnswer?.radioIndex == indexRadioFilter && lastQuestion.radios[indexRadioFilter].action == 1 && lastAnswer?.primaryValue == lastQuestion.radios[indexRadioFilter].value : false
 
     console.log(answers)
-    
+    console.log(isEnterSection)
+    console.log(isToSkipSection)
+    console.log(isToSkipTwoSections)
+
     if(lastQuestion.id == 10 ){
       if( answers.filter(ans => [10, 9].includes(ans.questionId) && ans.radioIndex.toString() == "1").length > 0 ) isEnterSection = true;
     } 
