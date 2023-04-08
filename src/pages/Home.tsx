@@ -297,11 +297,11 @@ export function Home() {
                     </tr>
                     <tr>
                       <td>1 dose destilado (whisky, vodka) (50ml)</td>
-                      <td>2 dose</td>
+                      <td>2 doses</td>
                     </tr>
                     <tr className="border-b border-black">
                       <td>1 garrafa de aguardente ou whisky (750ml)</td>
-                      <td>30 dose</td>
+                      <td>30 doses</td>
                     </tr>
 
                     <tr>
@@ -317,7 +317,7 @@ export function Home() {
                     </tr>
                     <tr className="border-b border-black">
                       <td>1 copo de sherry ou Vinho do Porto</td>
-                      <td>2 dose</td>
+                      <td>2 doses</td>
                     </tr>
 
                     <tr>
@@ -325,11 +325,11 @@ export function Home() {
                     </tr>
                     <tr>
                       <td>1 lata/garrafa pequena de cerveja (350ml)</td>
-                      <td>1,5 dose</td>
+                      <td>1,5 doses</td>
                     </tr>
                     <tr>
                       <td>1 garrafa de 600 ml</td>
-                      <td>3 dose</td>
+                      <td>3 doses</td>
                     </tr>
                     <tr>
                       <td>1 copo chopp (200ml)</td>
