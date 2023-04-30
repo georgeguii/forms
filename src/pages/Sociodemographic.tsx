@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import { LabelForm } from "../components/Label";
+import { api } from "../lib/axios";
 
-
+// /students/{user}/{password}
 export function Sociodemographic() {
 
     const navigate = useNavigate();
@@ -27,16 +28,33 @@ export function Sociodemographic() {
 
     }, [checkAge]);
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
+        try {
+            await api.get(`canAnswer/${answer["enrollment"]}`, {
+                headers: { "Content-Security-Policy": "upgrade-insecure-requests" },
+            })
+                .then((result) => {
+                    console.log(result.data)
+                    if (!result.data) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                        return toast.error("Matricula inválida! Está matricula já respondeu ao formúlario");
+                    }
+                    else {
+                        if (Object.values(answer).findIndex((val: any) => { return ["", null, undefined].includes(val) }) >= 0) {
+                            return toast.error("Por favor preencha todos os campos");
+                        }
+                        else {
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                            navigate("/questoes")
+                        }
+                    }
+                });
+        } catch (error) {
+            return toast.error("Matricula inválida!");
+        }
 
-        if (Object.values(answer).findIndex((val: any) => { return ["", null, undefined].includes(val) }) >= 0) {
-            return toast.error("Por favor preencha todos os campos");
-        }
-        else {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-            navigate("/questoes")
-        }
+
     }
 
     return (
