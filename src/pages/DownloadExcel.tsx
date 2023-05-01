@@ -21,7 +21,7 @@ export function DownloadExcel() {
     {
       field: 'registrationNumber',
       headerName: 'Matrícula',
-      width: 150,
+      width: 125,
       editable: false,
       disableSelectionOnClick: true
     },
@@ -41,7 +41,7 @@ export function DownloadExcel() {
     {
       field: 'alreadyAnswered',
       headerName: 'Votou',
-      width: 150,
+      width: 110,
       renderCell: (params: any) => (
         <div>
           {params.value ?
@@ -155,7 +155,7 @@ export function DownloadExcel() {
             Baixar Respostas
           </button>
 
-          <Box className="mt-12 ml-12 w-full max-w-[60%]" sx={{ width: '100%' }}>
+          <Box className="mt-12" sx={{ width: '100%', maxWidth: '1000px' }}>
             <DataGrid
               localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
               rows={rows}
