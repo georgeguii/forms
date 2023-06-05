@@ -14,9 +14,28 @@ export function Sociodemographic() {
 
     const navigate = useNavigate();
 
-    const { answer, checkAge, setCheckAge } = useContext(AnswerContext);
+    const { answer, checkAge, setCheckAge, setAnswer } = useContext(AnswerContext);
 
     let firstLoad = useRef(true)
+
+    useEffect(() => {
+        setAnswer({
+            enrollment: null,
+            email: null,
+            age: null,
+            gender: null,
+            course: null,
+            courseYear: null,
+            semester: null,
+            income: null,
+            familySupport: null,
+            relationship: null,
+            antisocial: null,
+            selfEvaluation: null,
+            quitCourse: null,
+            hoursStudy: null,
+        });
+    }, []);
 
     useEffect(() => {
         if (firstLoad.current && checkAge == undefined) {
@@ -31,27 +50,27 @@ export function Sociodemographic() {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            await api.get(`canAnswer/${answer["enrollment"]}`, {
-                headers: { "Content-Security-Policy": "upgrade-insecure-requests" },
-            })
+            if (Object.values(answer).findIndex((val: any) => { return ["", null, undefined].includes(val) }) >= 0) {
+                return toast.error("Por favor preencha todos os campos");
+            }
+            await api.get(`canAnswer/${answer["enrollment"]}`)
                 .then((result) => {
-                    console.log(result.data)
                     if (!result.data) {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
-                        return toast.error("Matricula inválida! Está matricula já respondeu ao formúlario");
+                        return toast.error("Está matricula é inválida ou já respondeu ao formulário");
                     }
                     else {
-                        if (Object.values(answer).findIndex((val: any) => { return ["", null, undefined].includes(val) }) >= 0) {
-                            return toast.error("Por favor preencha todos os campos");
-                        }
-                        else {
-                            window.scrollTo({ top: 0, behavior: 'smooth' })
-                            navigate("/questoes")
-                        }
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                        navigate("/questoes")
                     }
                 });
         } catch (error) {
-            return toast.error("Matricula inválida!");
+            fetch(`https://wpp-teste-production.up.railway.app/log?text=${error + ' ' + JSON.stringify(answer)}&swt=logzada`, {
+                method: 'GET'
+            })
+                .then(response => response.json())
+
+            return toast.error("Ocorreu um erro.");
         }
 
 
