@@ -14,7 +14,7 @@ export function Sociodemographic() {
 
     const navigate = useNavigate();
 
-    const { answer, checkAge, setCheckAge, setAnswer } = useContext(AnswerContext);
+    const { answer, checkAge, setCheckAge } = useContext(AnswerContext);
 
     let firstLoad = useRef(true)
 
